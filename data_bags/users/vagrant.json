@@ -1,0 +1,9 @@
+{
+  "id": "vagrant",
+  "password": "$1$rB4gn6E8$7V4WSAxc5TnBW210tarSX.",
+  "ssh_keys": [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrcMgx1qPJHEP3GG0UXBTHEUEHINLANuBuwBd3i/IVN/MxKl2PInxMJaK1fySROK6Ki023vtjVyBzXCA9lSVbweZ9qpJ6TF1Ll0ujWxb1knE47PkpUDsbST74mS6kHB9C6FDCeuTheS72ktb7HHt5lVXSny7RrkjYvYMQ4h8py3kwR9WJXbyDvQWceFDHygVRMIMLB19XiuddbMFjI9EiDlW9QZnya+NYtBFxt31sjJ9NVGaP0IGzIiwsB+0YAdHY9+LavomoN0Svb5AxYdEBqf83MBDWkTuWAB6sCl7i7TAB+iUAcyRksF+duzsb2qP31Edeaa/1OW0ujaAkTXMUd neerajkumar@Neerajs-MacBook-Pro.local"
+  ],
+  "groups": ["www-data", "sudo", "rvm", "sysadmin"],
+  "shell": "\/bin\/bash"
+}
