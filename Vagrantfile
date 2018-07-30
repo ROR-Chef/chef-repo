@@ -15,10 +15,16 @@ Vagrant.configure("2") do |config|
   config.vm.box = 'ubuntu/trusty64'
 
   config.vm.network 'public_network', bridge: 'eth1', ip: '192.168.1.6'
+  config.ssh.private_key_path = "~/.ssh/id_rsa"
+
+  config.ssh.insert_key = false
 
   config.vm.provider :virtualbox do |vb|
     vb.name = 'cnode1'
+    vb.customize ["modifyvm", :id, "--cpus", 4]
+    vb.customize ["modifyvm", :id, "--memory", 2048]
   end
+
 
   # config.vm.provision 'chef_solo' do |chef|
   #   chef.cookbooks_path = ['cookbooks', 'site-cookbooks']

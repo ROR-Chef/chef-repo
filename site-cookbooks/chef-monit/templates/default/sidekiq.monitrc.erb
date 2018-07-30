@@ -1,0 +1,6 @@
+check process sidekiq with pidfile /home/deployer/www/wiki11/shared/tmp/pids/sidekiq.pid
+  start program = "/bin/su - deployer -c '/etc/init.d/sidekiq start'" with timeout 60 seconds
+  stop program = "/bin/su - deployer -c '/etc/init.d/sidekiq stop'" with timeout 60 seconds
+  restart program = "/usr/bin/sidekiq_restart.sh" with timeout 120 seconds
+  if totalmem is greater than 300 MB for 2 cycles then restart # eating up memory?
+  group sidekiq

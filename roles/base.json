@@ -121,21 +121,21 @@
     }
   },
   "run_list": [
-    "recipe[chef-solo-search]",
-    "recipe[users::sysadmins]",
-    "recipe[sudo]",
-    "recipe[openssh]",
-    "recipe[firewall::default]",
-    "recipe[ufw]",
-    "recipe[nginx::source]",
-    "recipe[postgresql::client]",
-    "recipe[postgresql::setup_users]",
-    "recipe[rvm::user]",
-    "recipe[nodejs]",
-    "recipe[apt-packages]",
-    "recipe[monit]",
-    "recipe[redisio]",
-    "recipe[redisio::enable]",
-    "recipe[ncdu]"
+      "recipe[chef-solo-search]",
+      "recipe[users::sysadmins]",
+      "recipe[sudo]",
+      "recipe[openssh]",
+      "recipe[firewall::default]",
+      "recipe[ufw]",
+      "recipe[nginx::source]",
+      "recipe[postgresql::client]",
+      "recipe[postgresql::setup_users]",
+      "recipe[rvm::user]",
+      "recipe[nodejs]",
+      "recipe[apt-packages]",
+      "recipe[monit]",
+      "recipe[redisio]",
+      "recipe[redisio::enable]",
+      "recipe[ncdu]"
   ]
 }

@@ -1,0 +1,4 @@
+#!/bin/bash
+PIDS=`<%= @pids_script %>`
+echo $PIDS | xargs -r kill -9
+service <%= @script_name %> restart

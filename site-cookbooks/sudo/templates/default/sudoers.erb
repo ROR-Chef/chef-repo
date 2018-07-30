@@ -17,8 +17,6 @@ Defaults    env_keep -= "<%= env_keep %>"
 # User privilege specification
 root          ALL=(ALL) ALL
 
-vagrant       ALL=(ALL) ALL
-
 <% @custom_commands_users.each do |commands| -%>
 # Privileges for specific command <%= commands[:command_list].join(', ') %> for user <%= commands[:user] %>
 <%= commands[:user] %> ALL = <%= "NOPASSWD:" if commands[:passwordless] %> <%= commands[:command_list].join(', ') %>

@@ -1,0 +1,8 @@
+<% (@num_workers || 1).times do |num| %>
+check process sidekiq_<%= @app_name %>_<%= num %>
+  with pidfile /home/deployer/www/<%= @app_name -%>/shared/tmp/pids/sidekiq-<%= num -%>.pid
+  start program = "/bin/su - deployer -c 'cd /home/deployer/www/<%= @app_name -%>/current && source /home/deployer/.rvm/scripts/rvm default do bundle exec sidekiq -e <%= @rails_env %> -C /home/deployer/www/<%= @app_name %>/current/config/sidekiq.yml -P /home/deployer/www/<%= @app_name %>/shared/tmp/pids/sidekiq-0.pid -L /home/deployer/www/<%= @app_name %>/shared/log/sidekiq.log'"
+  stop program = "/bin/su - deploy -c 'kill -s INT `cat /home/deployer/www/<%= @app_name %>/shared/tmp/pids/sidekiq-<%= num %>.pid`'" with timeout 90 seconds
+  if totalmem is greater than 300 MB for 2 cycles then restart # eating up memory?
+  group <%= @app_name %>_sidekiq
+<% end %>
