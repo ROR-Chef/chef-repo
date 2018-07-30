@@ -9,11 +9,10 @@ end
 
 monit_monitrc 'sidekiq'
 
-app_current_path = '/home/deployer/www/wiki11/current'
 app_shared_path = '/home/deployer/www/wiki11/shared'
-daemon_stdout = File.join("#{app_shared_path}/log", 'sidekiq.log')
-daemon_stderr = File.join("#{app_shared_path}", 'sidekiq-err.log')
-daemon_path = app_current_path
+daemon_stdout = File.join(app_shared_path, 'log', 'sidekiq.log')
+daemon_stderr = File.join(app_shared_path, 'sidekiq-err.log')
+daemon_path = '/home/deployer/www/wiki11/current'
 env = { 'APP_ENV' => 'production' }
 
 wiki11_servicify_service 'sidekiq' do
