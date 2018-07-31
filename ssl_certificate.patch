@@ -1,0 +1,126 @@
+diff --git a/.vagrant/machines/default/virtualbox/action_set_name b/.vagrant/machines/default/virtualbox/action_set_name
+index 6d55ae2..dc6bd2b 100644
+--- a/.vagrant/machines/default/virtualbox/action_set_name
++++ b/.vagrant/machines/default/virtualbox/action_set_name
+@@ -1 +1 @@
+-1532930524
+\ No newline at end of file
++1533054049
+\ No newline at end of file
+diff --git a/Berksfile b/Berksfile
+index a83afbf..46ec941 100644
+--- a/Berksfile
++++ b/Berksfile
+@@ -13,4 +13,6 @@ cookbook 'postgresql',   github: 'kirillshevch/postgresql'
+ cookbook 'nginx',        github: 'kirillshevch/nginx', ref: '2.7.7'
+ cookbook 'monit',        github: 'phlipper/chef-monit'
+ cookbook 'rvm',          github: 'martinisoft/chef-rvm', ref: 'v0.9.4'
+-cookbook 'redisio',      github: 'brianbianco/redisio', ref: 'v2.6.1'
+\ No newline at end of file
++cookbook 'redisio',      github: 'brianbianco/redisio', ref: 'v2.6.1'
++
++cookbook 'ssl_certificate', '~> 2.1.0'
+\ No newline at end of file
+diff --git a/Berksfile.lock b/Berksfile.lock
+index d8797e6..f2ba8fc 100644
+--- a/Berksfile.lock
++++ b/Berksfile.lock
+@@ -20,6 +20,7 @@ DEPENDENCIES
+     git: https://github.com/martinisoft/chef-rvm.git
+     revision: 9ab5f8fffe6bd18625347cfa760bd645a562e01b
+     ref: v0.9.4
++  ssl_certificate (~> 2.1.0)
+   sudo (~> 3.3.1)
+   swap_tuning (~> 0.2.0)
+   ufw (~> 3.1.0)
+@@ -82,6 +83,7 @@ GRAPH
+   selinux_policy (2.1.0)
+   seven_zip (3.0.0)
+     windows (>= 0.0.0)
++  ssl_certificate (2.1.0)
+   sudo (3.3.1)
+   swap (0.3.8)
+   swap_tuning (0.2.0)
+diff --git a/roles/base.json b/roles/base.json
+index cb311c2..9c4d7da 100644
+--- a/roles/base.json
++++ b/roles/base.json
+@@ -128,6 +128,7 @@
+       "recipe[firewall::default]",
+       "recipe[ufw]",
+       "recipe[nginx::source]",
++      "recipe[ssl_certificate]",
+       "recipe[postgresql::client]",
+       "recipe[postgresql::setup_users]",
+       "recipe[rvm::user]",
+diff --git a/site-cookbooks/chef-monit/metadata.rb b/site-cookbooks/chef-monit/metadata.rb
+index 238175a..cfd1683 100644
+--- a/site-cookbooks/chef-monit/metadata.rb
++++ b/site-cookbooks/chef-monit/metadata.rb
+@@ -20,3 +20,4 @@ chef_version '>= 12.14' if respond_to?(:chef_version)
+ # source_url 'https://github.com/<insert_org_here>/chef-monit'
+ 
+ depends 'wiki11_servicify'
++depends 'ssl_certificate'
+diff --git a/site-cookbooks/chef-nginx/recipes/production.rb b/site-cookbooks/chef-nginx/recipes/production.rb
+index 96285ef..42ee9b8 100644
+--- a/site-cookbooks/chef-nginx/recipes/production.rb
++++ b/site-cookbooks/chef-nginx/recipes/production.rb
+@@ -1,7 +1,28 @@
++node.default['base']['common_name'] = 'wiki11.com'
++node.default['base']['ssl_cert']['source'] = 'self-signed'
++node.default['base']['ssl_key']['source'] = 'self-signed'
++
++cert = ssl_certificate 'wiki11' do
++  notifies :restart, 'service[nginx]'
++end
++
+ template "#{node.nginx.dir}/sites-available/wiki11.conf" do
+   source 'wiki11.conf.erb'
+   mode '0644'
++  owner 'root'
++  group 'root'
++  variables(
++  name: 'wiki11-ssl',
++  server_name: 'ssl.wiki11.com',
++  docroot: '/home/deployer/www',
++  # [...]
++  # ssl_key: cert.key_path,
++  # ssl_cert: cert.chain_combined_path
++  )
++
+   notifies :reload, 'service[nginx]', :delayed
+ end
+ 
+-nginx_site 'wiki11.conf'
++nginx_site 'wiki11.conf' do
++  enable true
++end
+diff --git a/site-cookbooks/chef-nginx/templates/wiki11.conf.erb b/site-cookbooks/chef-nginx/templates/wiki11.conf.erb
+index c3cb83c..3a97434 100644
+--- a/site-cookbooks/chef-nginx/templates/wiki11.conf.erb
++++ b/site-cookbooks/chef-nginx/templates/wiki11.conf.erb
+@@ -3,13 +3,13 @@ upstream puma {
+ }
+ 
+ server {
+-  listen 80;
++  listen 443;
+   server_name _;
+   return $scheme://127.0.0.1$request_uri;
+ }
+ 
+ server {
+-  listen 80;
++  listen 443;
+ 
+   client_max_body_size 100m;
+ 
+@@ -43,4 +43,7 @@ server {
+     proxy_redirect  http://127.0.0.1:2812 /monit;
+     proxy_cookie_path / /monit/;
+   }
++
++  <%= render 'nginx.erb', cookbook: 'ssl_certificate' %>
++
+ }

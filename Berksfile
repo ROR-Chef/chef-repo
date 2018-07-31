@@ -14,3 +14,5 @@ cookbook 'nginx',        github: 'kirillshevch/nginx', ref: '2.7.7'
 cookbook 'monit',        github: 'phlipper/chef-monit'
 cookbook 'rvm',          github: 'martinisoft/chef-rvm', ref: 'v0.9.4'
 cookbook 'redisio',      github: 'brianbianco/redisio', ref: 'v2.6.1'
+
+cookbook 'acme', '~> 4.0.0'

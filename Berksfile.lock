@@ -1,4 +1,5 @@
 DEPENDENCIES
+  acme (~> 4.0.0)
   monit
     git: https://github.com/phlipper/chef-monit.git
     revision: f027aea655a0ef2ea6d0b7bdde00975268a82ef9
@@ -26,6 +27,8 @@ DEPENDENCIES
   users (~> 4.0.3)
 
 GRAPH
+  acme (4.0.0)
+    compat_resource (>= 12.19)
   apt (7.0.0)
   ark (3.1.0)
     build-essential (>= 0.0.0)

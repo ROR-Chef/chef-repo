@@ -128,6 +128,7 @@
       "recipe[firewall::default]",
       "recipe[ufw]",
       "recipe[nginx::source]",
+      "recipe[acme]",
       "recipe[postgresql::client]",
       "recipe[postgresql::setup_users]",
       "recipe[rvm::user]",
