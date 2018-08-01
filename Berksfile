@@ -16,3 +16,4 @@ cookbook 'rvm',          github: 'martinisoft/chef-rvm', ref: 'v0.9.4'
 cookbook 'redisio',      github: 'brianbianco/redisio', ref: 'v2.6.1'
 
 cookbook 'acme', '~> 4.0.0'
+cookbook 'mysql', git: 'https://github.com/chef-cookbooks/mysql', tag: 'v5.6.3'

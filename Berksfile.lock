@@ -3,6 +3,10 @@ DEPENDENCIES
   monit
     git: https://github.com/phlipper/chef-monit.git
     revision: f027aea655a0ef2ea6d0b7bdde00975268a82ef9
+  mysql
+    git: https://github.com/chef-cookbooks/mysql
+    revision: f69d14c14edb2911601a6744b8b7ec74c3d108a0
+    tag: v5.6.3
   ncdu (~> 1.0.0)
   nginx
     git: https://github.com/miketheman/nginx
@@ -51,6 +55,8 @@ GRAPH
     seven_zip (>= 0.0.0)
   monit (1.5.4)
     build-essential (>= 0.0.0)
+  mysql (5.6.3)
+    yum-mysql-community (>= 0.0.0)
   ncdu (1.0.0)
   nginx (8.1.4)
     build-essential (>= 5.0.0)
@@ -95,4 +101,5 @@ GRAPH
   users (4.0.3)
   windows (4.3.4)
   yum-epel (3.1.0)
+  yum-mysql-community (4.0.1)
   zypper (0.4.0)
