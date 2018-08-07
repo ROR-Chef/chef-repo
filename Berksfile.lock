@@ -12,7 +12,8 @@ DEPENDENCIES
     revision: f027aea655a0ef2ea6d0b7bdde00975268a82ef9
   mysql
     git: https://github.com/chef-cookbooks/mysql
-    revision: 8e8162be5d56157780dbc677d57730a32c98e66a
+    revision: f69d14c14edb2911601a6744b8b7ec74c3d108a0
+    tag: v5.6.3
   nginx
     git: git://github.com/ROR-Chef/nginx.git
     revision: 427ee0dacc80f9804fa183526976e465bc8ae63c
@@ -28,8 +29,9 @@ DEPENDENCIES
     revision: 222e4d48eff9a38e3fddbcd07734aa6c05b4665d
     ref: v2.6.1
   rvm
-    git: git://github.com/fnichol/chef-rvm.git
-    revision: d522bc254f9b9009226d22deb8eb44d8946c635c
+    git: git://github.com/martinisoft/chef-rvm.git
+    revision: 9ab5f8fffe6bd18625347cfa760bd645a562e01b
+    ref: v0.9.4
   sudo
     git: git://github.com/ROR-Chef/sudo.git
     revision: 439be77c74cf2a9f8efd40e6fd6995f8224c411e
@@ -57,7 +59,8 @@ GRAPH
     seven_zip (>= 0.0.0)
   monit (1.5.4)
     build-essential (>= 0.0.0)
-  mysql (8.5.2)
+  mysql (5.6.3)
+    yum-mysql-community (>= 0.0.0)
   nginx (8.1.5)
     build-essential (>= 5.0.0)
     ohai (>= 4.1.0)
@@ -78,7 +81,7 @@ GRAPH
     build-essential (>= 0.0.0)
     selinux_policy (>= 0.0.0)
     ulimit (>= 0.1.2)
-  rvm (0.10.1)
+  rvm (0.9.4)
     chef_gem (>= 0.0.0)
     java (>= 0.0.0)
   selinux_policy (2.1.0)
@@ -89,4 +92,5 @@ GRAPH
   users (4.0.3)
   windows (5.0.0)
   yum-epel (3.2.0)
+  yum-mysql-community (4.0.1)
   zypper (0.4.0)

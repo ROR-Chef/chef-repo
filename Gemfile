@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'chef', '~> 12.5.1'
+gem 'chef', '~> 12.22.5'
 gem 'knife-solo'
 gem 'knife-solo_data_bag'
 gem 'vagrant'

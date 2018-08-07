@@ -2,6 +2,12 @@
 
 ### Production
 
+* Prepare
+
+``` sh
+bundle exec knife solo prepare vagrant@192.168.1.6 --node-name wiki11
+```
+
 * Re-provision
 
 ``` sh
