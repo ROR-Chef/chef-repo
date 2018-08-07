@@ -1,79 +1,75 @@
 DEPENDENCIES
-  acme (~> 4.0.0)
+  acme
+    git: git://github.com/schubergphilis/chef-acme.git
+    revision: 1bd9c06a6fba55cc35c6da2dc466dfe68ad21424
+  apt (~> 6.0.0)
+  build-essential (~> 5.0.0)
+  compat_resource
+    git: git://github.com/ROR-Chef/compat_resource.git
+    revision: 5fcd99c37373534b39abd565195f873262a81bfb
   monit
-    git: https://github.com/phlipper/chef-monit.git
+    git: git://github.com/phlipper/chef-monit.git
     revision: f027aea655a0ef2ea6d0b7bdde00975268a82ef9
   mysql
     git: https://github.com/chef-cookbooks/mysql
-    revision: f69d14c14edb2911601a6744b8b7ec74c3d108a0
-    tag: v5.6.3
-  ncdu (~> 1.0.0)
+    revision: 8e8162be5d56157780dbc677d57730a32c98e66a
   nginx
-    git: https://github.com/miketheman/nginx
-    revision: 8c8c3d7047d4f64e553aef0eedc95270831d039d
-  nodejs (~> 3.0.0)
+    git: git://github.com/ROR-Chef/nginx.git
+    revision: 427ee0dacc80f9804fa183526976e465bc8ae63c
+  nodejs
+    git: git://github.com/ROR-Chef/nodejs.git
+    revision: 014b0cc28f32d21d074f378eee4367e92d9d622c
   openssh (~> 2.1.1)
   postgresql
-    git: https://github.com/kirillshevch/postgresql.git
-    revision: fce4edddc74d3ae8f07903120c3539097885e021
+    git: git://github.com/ROR-Chef/postgresql.git
+    revision: 8bf11345e0521bf8512d9c4561ded514fa33ef26
   redisio
-    git: https://github.com/brianbianco/redisio.git
+    git: git://github.com/brianbianco/redisio.git
     revision: 222e4d48eff9a38e3fddbcd07734aa6c05b4665d
     ref: v2.6.1
-  runit (~> 4.1.2)
   rvm
-    git: https://github.com/martinisoft/chef-rvm.git
-    revision: 9ab5f8fffe6bd18625347cfa760bd645a562e01b
-    ref: v0.9.4
-  sudo (~> 3.3.1)
-  swap_tuning (~> 0.2.0)
-  ufw (~> 3.1.0)
+    git: git://github.com/fnichol/chef-rvm.git
+    revision: d522bc254f9b9009226d22deb8eb44d8946c635c
+  sudo
+    git: git://github.com/ROR-Chef/sudo.git
+    revision: 439be77c74cf2a9f8efd40e6fd6995f8224c411e
   users (~> 4.0.3)
 
 GRAPH
   acme (4.0.0)
-    compat_resource (>= 12.19)
-  apt (7.0.0)
-  ark (3.1.0)
+    compat_resource (>= 12.19.0)
+  apt (6.0.1)
+  ark (4.0.0)
     build-essential (>= 0.0.0)
     seven_zip (>= 0.0.0)
-    windows (>= 0.0.0)
-  build-essential (8.1.1)
-    mingw (>= 1.1)
+  build-essential (5.0.0)
+    compat_resource (>= 12.10)
+    mingw (>= 0.0.0)
     seven_zip (>= 0.0.0)
-  chef-sugar (4.0.0)
   chef_gem (0.1.0)
   compat_resource (12.19.1)
-  firewall (2.6.4)
-    chef-sugar (>= 0.0.0)
   homebrew (5.0.4)
   iptables (4.3.4)
   java (2.2.0)
     homebrew (>= 0.0.0)
     windows (>= 0.0.0)
-  mingw (2.0.2)
+  mingw (2.1.0)
     seven_zip (>= 0.0.0)
   monit (1.5.4)
     build-essential (>= 0.0.0)
-  mysql (5.6.3)
-    yum-mysql-community (>= 0.0.0)
-  ncdu (1.0.0)
-  nginx (8.1.4)
+  mysql (8.5.2)
+  nginx (8.1.5)
     build-essential (>= 5.0.0)
     ohai (>= 4.1.0)
     yum-epel (>= 0.0.0)
     zypper (>= 0.0.0)
-  nodejs (3.0.0)
-    apt (>= 2.9.1)
-    ark (>= 0.0.0)
+  nodejs (5.0.0)
+    ark (>= 2.0.2)
     build-essential (>= 0.0.0)
-    homebrew (>= 0.0.0)
-    yum-epel (>= 0.0.0)
   ohai (5.2.3)
   openssh (2.1.1)
     iptables (>= 1.0)
-  openssl (8.2.0)
-  packagecloud (1.0.0)
+  openssl (8.5.0)
   postgresql (6.1.1)
     build-essential (>= 2.0.0)
     compat_resource (>= 12.16.3)
@@ -82,24 +78,15 @@ GRAPH
     build-essential (>= 0.0.0)
     selinux_policy (>= 0.0.0)
     ulimit (>= 0.1.2)
-  runit (4.1.2)
-    packagecloud (>= 0.0.0)
-    yum-epel (>= 0.0.0)
-  rvm (0.9.4)
+  rvm (0.10.1)
     chef_gem (>= 0.0.0)
     java (>= 0.0.0)
   selinux_policy (2.1.0)
   seven_zip (3.0.0)
     windows (>= 0.0.0)
-  sudo (3.3.1)
-  swap (0.3.8)
-  swap_tuning (0.2.0)
-    swap (~> 0.3)
-  ufw (3.1.1)
-    firewall (>= 2.0)
+  sudo (5.4.0)
   ulimit (1.0.0)
   users (4.0.3)
-  windows (4.3.4)
-  yum-epel (3.1.0)
-  yum-mysql-community (4.0.1)
+  windows (5.0.0)
+  yum-epel (3.2.0)
   zypper (0.4.0)

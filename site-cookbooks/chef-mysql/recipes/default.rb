@@ -7,7 +7,7 @@
 mysql_service 'default' do
   port '3306'
   version '5.5'
-  server_root_password 'neerajku09'
+  initial_root_password 'neerajku09'
   action [:create, :restart]
 end
 

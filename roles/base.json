@@ -64,28 +64,6 @@
         }
       ]
     },
-    "firewall": {
-      "rules": [
-        {
-          "http": {
-            "port": "80",
-            "protocol": "tcp"
-          },
-          "https": {
-            "port": "443",
-            "protocol": "tcp"
-          },
-          "monit": {
-            "port": "2812",
-            "protocol": "tcp"
-          },
-          "redis": {
-            "port": "6379",
-            "protocol": "tcp"
-          }
-        }
-      ]
-    },
     "monit": {
       "mail_alerts": false,
       "web_interface": {
@@ -123,21 +101,21 @@
   "run_list": [
       "recipe[chef-solo-search]",
       "recipe[users::sysadmins]",
+      "recipe[apt]",
       "recipe[sudo]",
       "recipe[openssh]",
-      "recipe[firewall::default]",
-      "recipe[ufw]",
       "recipe[nginx::source]",
       "recipe[acme]",
-      "recipe[chef-mysql]",
       "recipe[postgresql::client]",
       "recipe[postgresql::setup_users]",
+      "recipe[chef-mysql]",
       "recipe[rvm::user]",
       "recipe[nodejs]",
       "recipe[apt-packages]",
       "recipe[monit]",
       "recipe[redisio]",
-      "recipe[redisio::enable]",
-      "recipe[ncdu]"
+      "recipe[redisio::enable]"
   ]
 }
+
+// Chef Client version 12.22.5
