@@ -105,11 +105,8 @@
       "recipe[sudo]",
       "recipe[openssh]",
       "recipe[nginx::source]",
-      "recipe[acme]",
       "recipe[postgresql::client]",
       "recipe[postgresql::setup_users]",
-      "recipe[chef-mysql]",
-      "recipe[rvm::user]",
       "recipe[nodejs]",
       "recipe[apt-packages]",
       "recipe[monit]",
@@ -118,4 +115,4 @@
   ]
 }
 
-// Chef Client version 12.22.5
+// Chef Client version 15.10.12

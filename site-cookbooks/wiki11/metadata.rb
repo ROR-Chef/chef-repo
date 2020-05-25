@@ -1,6 +1,6 @@
 name 'wiki11'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Neeraj'
+maintainer_email 'neeraj.kumar@gmail.com'
 license 'All Rights Reserved'
 description 'Installs/Configures wiki11'
 long_description 'Installs/Configures wiki11'
@@ -19,7 +19,6 @@ chef_version '>= 12.14' if respond_to?(:chef_version)
 #
 # source_url 'https://github.com/<insert_org_here>/wiki11'
 
-depends 'acme'
+depends 'rvm'
 depends 'wiki11_servicify'
 depends 'monit'
-

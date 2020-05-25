@@ -1,1 +1,1 @@
-default['wiki11']['server'] = '192.168.1.6'
+default['wiki11']['server'] = '139.59.60.50'

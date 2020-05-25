@@ -1,7 +1,8 @@
 DEPENDENCIES
   acme
     git: git://github.com/schubergphilis/chef-acme.git
-    revision: 1bd9c06a6fba55cc35c6da2dc466dfe68ad21424
+    revision: 317e064ab03d3689e503112308f7a7c447ba04ce
+    ref: v4.0.0
   apt (~> 6.0.0)
   build-essential (~> 5.0.0)
   compat_resource
@@ -29,9 +30,8 @@ DEPENDENCIES
     revision: 222e4d48eff9a38e3fddbcd07734aa6c05b4665d
     ref: v2.6.1
   rvm
-    git: git://github.com/martinisoft/chef-rvm.git
-    revision: 9ab5f8fffe6bd18625347cfa760bd645a562e01b
-    ref: v0.9.4
+    git: git://github.com/ROR-Chef/rvm.git
+    revision: 13ba058358d28a5d8526983966f863aaee0e4ca5
   sudo
     git: git://github.com/ROR-Chef/sudo.git
     revision: 439be77c74cf2a9f8efd40e6fd6995f8224c411e
@@ -48,13 +48,8 @@ GRAPH
     compat_resource (>= 12.10)
     mingw (>= 0.0.0)
     seven_zip (>= 0.0.0)
-  chef_gem (0.1.0)
   compat_resource (12.19.1)
-  homebrew (5.0.4)
   iptables (4.3.4)
-  java (2.2.0)
-    homebrew (>= 0.0.0)
-    windows (>= 0.0.0)
   mingw (2.1.0)
     seven_zip (>= 0.0.0)
   monit (1.5.4)
@@ -81,9 +76,7 @@ GRAPH
     build-essential (>= 0.0.0)
     selinux_policy (>= 0.0.0)
     ulimit (>= 0.1.2)
-  rvm (0.9.4)
-    chef_gem (>= 0.0.0)
-    java (>= 0.0.0)
+  rvm (0.10.1)
   selinux_policy (2.1.0)
   seven_zip (3.0.0)
     windows (>= 0.0.0)
